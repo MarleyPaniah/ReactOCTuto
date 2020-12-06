@@ -55,8 +55,9 @@ class Search extends React.Component {
         this.totalPages = 0
         this.setState({
             films: []
+        }, () => {
+            this._loadFilms() // Set as a callback due to the asynchronicity of setState
         })
-        this._loadFilms()
     }
 
     _searchTextInputChanged(text) {
@@ -71,9 +72,9 @@ class Search extends React.Component {
                 style={styles.textInput}
                 placeholder={"Search a film..."}
                 onChangeText={(text) => this._searchTextInputChanged(text)}
-                onSubmitEditing={() => this._loadFilms()}
+                onSubmitEditing={() => this._searchFilms()}
              />
-             <Button title={"Search"} onPress={ () => this._searchFilms } />
+             <Button title={"Search"} onPress={ () => this._searchFilms() } />
              <FlatList
                  data={this.state.films}
                  keyExtractor={(item) => item.id.toString()}
