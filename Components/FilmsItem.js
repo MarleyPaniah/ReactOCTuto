@@ -1,27 +1,28 @@
-// Components/NotesItem.js
+// Components/FilmsItem.js
 
 import React from 'react'
 import { StyleSheet, View, Text, Image } from 'react-native'
 
-class NotesItem extends React.Component {
+class FilmsItem extends React.Component {
     render() {
         console.log(this.props);
-        const note = this.props.note;
+        const film = this.props.film;
         return (
             <View style={styles.main_container}>
                 <Image
                     style={styles.image}
-                    source={{uri: "../assets/icon.png"}}
+                    source={{uri: film.poster_path}}
                 />
                 <View style={styles.content_container}>
                     <View style={styles.header_container}>
-                        <Text style={styles.title_text}>{note.title}</Text>
+                        <Text style={styles.title_text}>{film.title}</Text>
+                        <Text style={styles.vote_text}>{film.vote_average}</Text>
                     </View>
                     <View stle={styles.description_container}>
-                        <Text style={styles.description_text} numberOfLines={6}>{note.text}</Text>
+                        <Text style={styles.description_text} numberOfLines={6}>{film.overview}</Text>
                     </View>
                     <View style={styles.date_container}>
-                        <Text style={styles.date_text}>modifié le {note.date}</Text>
+                        <Text style={styles.date_text}>Sorti le {film.release_date}</Text>
                     </View>
                 </View>
             </View>
@@ -57,6 +58,11 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         paddingRight: 5
     },
+    vote_text: {
+        fontWeight: 'bold',
+        fontSize: 26,
+        color: '#666666'
+    },
     description_container: {
         flex: 7
     },
@@ -75,4 +81,4 @@ const styles = StyleSheet.create({
 }
 );
 
-export default NotesItem
+export default FilmsItem

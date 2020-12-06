@@ -1,11 +1,11 @@
-// Helpers/notesData.js
+// Helpers/filmsData.js
 
-export default notes = [
+export default films = [
     {
         id: 501,
         date: "06/04/2012",
         title: "Bab El Oued, Ville en Algérie",
-        text: "Quel beau voyage était-ce ! " +
+        overview: "Quel beau voyage était-ce ! " +
             "Bab El Oued (en arabe : باب الواد ; « porte de la Rivière ») est une commune de la wilaya d'Alger en " +
             "Algérie, mais aussi un quartier populaire de la ville historique d'Alger, situé sur la façade maritime " +
             "nord de la ville et où vivent 100 000 personnes. " +
