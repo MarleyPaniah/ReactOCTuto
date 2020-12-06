@@ -158,17 +158,17 @@
         <subPane>
           <expand>
             <path>
-              <item name="PartnerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PartnerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="ReactOCTuto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReactOCTuto" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PartnerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PartnerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="ReactOCTuto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReactOCTuto" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PartnerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PartnerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="ReactOCTuto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReactOCTuto" type="462c0819:PsiDirectoryNode" />
               <item name="Components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -189,7 +189,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Projets\INFORMATIQUE\PARTNER\Partner\ReactNative\PartnerApp\Components" />
+      <recent name="D:\Projets\CODE\ReactOCTuto\Components" />
     </key>
   </component>
   <component name="RunDashboard">

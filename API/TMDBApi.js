@@ -1,10 +1,16 @@
-//API/TMDBApi.js
+// API/TMDBApi.js
 
 import API_TOKEN from '../Helpers/token'
 
-export function getFilmsFromApiWithSearchedText(text) {
-    const url = 'https://api.themoviedb.org/3/search/movie?api_key='+API_TOKEN+'&language=fr&query='+text;
+export function getFilmsFromApiWithSearchedText(text, page) {
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_TOKEN}&language=fr&query=${text}&page=${page}`;
+    console.log(url)
     return fetch(url)
-        .then((response) => response.json()) //La réponse a correctement été reçue et transformée en JSON
-        .catch((error) => console.log(error)) // En cas d'erreur
+        .then((response) => response.json()) // The response was corretly received and turned into a json
+        .catch((error) => console.log(error)) // In case of error
 }
+
+export function getImageFromAPI(name) {
+    return `https://image.tmdb.org/t/p/w300${name}`
+}
+ 

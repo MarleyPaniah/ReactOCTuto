@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "PartnerApp",
-    "slug": "PartnerApp",
+    "name": "ReactOCTuto",
+    "slug": "ReactOCTuto",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
