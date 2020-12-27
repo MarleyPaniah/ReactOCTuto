@@ -64,6 +64,12 @@ class Search extends React.Component {
         this.searchedText = text
     }
 
+    _displayDetailForFilm = (idFilm) => { // ES6 syntax, important to keep it here
+        console.log(`Display film with id ${idFilm}`)
+        this.props.navigation.navigate("FilmDetail", {idFilm: idFilm}) // Navigates to a FilmDetail view
+        // format for navigation: navigate('RouteName', { parameters })
+    }
+
     render() {
         console.log("Search component rendering...")
         return (
@@ -78,7 +84,7 @@ class Search extends React.Component {
              <FlatList
                  data={this.state.films}
                  keyExtractor={(item) => item.id.toString()}
-                 renderItem={({item}) => <FilmsItem film={item}/>}
+                 renderItem={({item}) => <FilmsItem film={item} displayDetailForFilm={this._displayDetailForFilm}/>}
                  onEndReachedThreshold={0.5}
                  onEndReached={() => {
                      if (this.page < this.totalPages) {

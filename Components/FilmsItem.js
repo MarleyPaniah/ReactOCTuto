@@ -1,15 +1,17 @@
 // Components/FilmsItem.js
 
 import React from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 import { getImageFromAPI } from '../API/TMDBApi';
 
 class FilmsItem extends React.Component {
     render() {
         //console.log(this.props);
-        const film = this.props.film;
+        const { film, displayDetailForFilm } = this.props; // props contains the attributes passed from the FlatList of the Search class
         return (
-            <View style={styles.main_container}>
+            <TouchableOpacity
+            style={styles.main_container}
+            onPress={() => displayDetailForFilm(film.id)}>
                 <Image
                     style={styles.image}
                     source={{uri: getImageFromAPI(film.poster_path)}}
@@ -19,14 +21,14 @@ class FilmsItem extends React.Component {
                         <Text style={styles.title_text}>{film.title}</Text>
                         <Text style={styles.vote_text}>{film.vote_average}</Text>
                     </View>
-                    <View stle={styles.description_container}>
+                    <View style={styles.description_container}>
                         <Text style={styles.description_text} numberOfLines={6}>{film.overview}</Text>
                     </View>
                     <View style={styles.date_container}>
                         <Text style={styles.date_text}>Sorti le {film.release_date}</Text>
                     </View>
                 </View>
-            </View>
+            </TouchableOpacity>
 
         )
 
