@@ -76,7 +76,7 @@ class Search extends React.Component {
          <View style={styles.mainContainer}>
              <TextInput
                 style={styles.textInput}
-                placeholder={"Search a film..."}
+                placeholder={"Search a film.."}
                 onChangeText={(text) => this._searchTextInputChanged(text)}
                 onSubmitEditing={() => this._searchFilms()}
              />

@@ -4,6 +4,7 @@ import React from 'react'
 import { StyleSheet, View, Text, ActivityIndicator, Image } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { getFilmDetailFromApi, getImageFromAPI } from '../API/TMDBApi'
+import { connect } from 'react-redux'
 
 import moment from 'moment'
 import numeral from 'numeral'
@@ -79,10 +80,18 @@ class FilmDetail extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => { // For sending the state through Redux
+    // Any time the store is updated, this function will be called.
+    // The results will be merged into the component's props
+    return {
+        favoritesFilm: state.favoritesFilm
+    }
+}
+
 const styles = StyleSheet.create({
     main_container: {
         flex: 1,
-        backgroundColor: 'lightgrey'
+        backgroundColor: 'lightgray'
     },
     loading_container: {
         position: 'absolute',
@@ -125,4 +134,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default FilmDetail
+export default connect(mapStateToProps)(FilmDetail)
