@@ -12,7 +12,7 @@ function toggleFavorite(state = initialState, action) {
                 nextState = {
                     ...state,
                     // Rerender the list by filtering out the movie that has this id
-                    favoritesFilm: state.favoritesFilmFilm.filter((item, index) => index !== favoriteFilmIndex)
+                    favoritesFilm: state.favoritesFilm.filter((item, index) => index !== favoriteFilmIndex)
                 }
             }
             else {

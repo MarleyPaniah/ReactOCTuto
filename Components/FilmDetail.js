@@ -1,7 +1,7 @@
 // Components/FilmDetail.js
 
 import React from 'react'
-import { StyleSheet, View, Text, ActivityIndicator, Image } from 'react-native'
+import { StyleSheet, View, Text, ActivityIndicator, Image, TouchableOpacity } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { getFilmDetailFromApi, getImageFromAPI } from '../API/TMDBApi'
 import { connect } from 'react-redux'
@@ -19,8 +19,9 @@ class FilmDetail extends React.Component {
         }
     }
 
+    // Debugging functions called automatically
     componentDidMount() {
-        idFilm = this.props.route.params.idFilm; // parameters passed during navigation from a view to another is handled with this
+        var idFilm = this.props.route.params.idFilm; // parameters passed during navigation from a view to another is handled with this
         getFilmDetailFromApi(idFilm)
         .then(data => {
             this.setState({
@@ -29,6 +30,11 @@ class FilmDetail extends React.Component {
             })
         })
         console.log("Component FilmDetail mounted")
+    }
+
+    componentDidUpdate() {
+        console.log("componentDidUpdate: ")
+        console.log(this.props.favoritesFilm)
     }
 
     _displayLoading() {
@@ -41,6 +47,25 @@ class FilmDetail extends React.Component {
         }
     }
 
+    _toggleFavorite() {
+        // Redux action
+        const action = { type: "TOGGLE_FAVORITE", value: this.state.film }
+        this.props.dispatch(action)
+    }
+
+    _displayFavoriteImage() {
+        var sourceImage = require('../assets/ic_favorite_border.png')
+        if (this.props.favoritesFilm.findIndex(item => item.id === this.state.film.id) !== -1) {
+            sourceImage = require('../assets/ic_favorite.png')
+        }
+        return (
+            <Image
+                style={styles.favorite_image}
+                source={sourceImage}
+            />
+        )
+    }
+
     _displayFilm() {
         const { film } = this.state
         if (film != undefined) {
@@ -51,6 +76,12 @@ class FilmDetail extends React.Component {
                         source={{uri: getImageFromAPI(film.backdrop_path)}}
                     />
                     <Text style={styles.title_text}>{film.title}</Text>
+                    <TouchableOpacity
+                        style={styles.favorite_container}
+                        onPress={() => this._toggleFavorite()}
+                    >
+                        {this._displayFavoriteImage()}
+                    </TouchableOpacity>
                     <Text style={styles.description_text}>{film.overview}</Text>
                     <Text style={styles.default_text}> 
                         Sorti le {moment(new Date(film.release_date)).format('DD/MM/YYYY')}
@@ -68,6 +99,8 @@ class FilmDetail extends React.Component {
             )
         }
     }
+
+    
 
     render() {
         //console.log("PROPS", this.props)
@@ -131,6 +164,13 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         marginRight: 5,
         marginTop: 5,
+    },
+    favorite_container: {
+        alignItems: 'center'
+    },
+    favorite_image: {
+        width: 40,
+        height: 40
     }
 })
 
